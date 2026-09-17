@@ -48,10 +48,10 @@ To continue, `print("Visayas Communication DataFrame")` prints a plain text head
 
 Then, `display(VisComm)` formats and prints the VisComm DataFrame as the output.
 
-Lastly, `print("Number of rows:", len(VisComm))` 
+Lastly, `print("Number of rows:", len(VisComm))` calculates and prints the total row count of the filtered DataFrame using len()
 
 
-
+Produced Data:
 
 | Index | Name | Gender | Math | Electronics | Average |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -60,3 +60,44 @@ Lastly, `print("Number of rows:", len(VisComm))`
 | **17** | S18 | Male | 81 | 40 | 63.50 |
 | **21** | S22 | Female | 64 | 39 | 62.50 |
 | **27** | S28 | Male | 85 | 53 | 67.75 |
+
+## B. Visayas Female DataFrame
+
+Objective: 
+
+To create a DataFrame named VisFemale containing students whose Hometown is Visayas and
+whose Gender is Female. Retain only:
+
+Name, Track, GEAS, Electronics, Average
+
+Display VisFemale. Then display only the rows of VisFemale whose Average is at least 60. Do not
+overwrite VisFemale when performing this second filter.
+
+Code:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_excel('board2.xlsx')
+df
+
+df['Average'] = (df['Math'] + df['Electronics'] + df['GEAS'] + df['Communication']) / 4
+
+vis_female = (df['Hometown'] == 'Visayas') & (df['Gender'] == 'Female')
+
+VisFemale = df[vis_female][['Name', 'Track', 'GEAS', 'Electronics', 'Average']]
+
+print("Visayas Female DataFrame")
+display(VisFemale)
+
+print("\n Visayas Female DataFrame (with average of 60)")
+display(VisFemale[VisFemale['Average'] >= 60])
+```
+
+First `import pandas as pd` imports the panda library and assigns a standard alias pd for easier access. To add, `import matplotlib.pyplot as plt` import matplotlib's module for data vissualization and assigns a standard alis plt.
+
+Then, `df = pd.read_excel('board2.xlsx')` reads an Excel file named board2.xlsx into a Pandas DataFrame named df.
+
+Next, `df['Average'] = (df['Math'] + df['Electronics'] + df['GEAS'] + df['Communication']) / 4` computes the arithmetic mean of four subject scores (Math, Electronics, GEAS, and Communication) for each student and stores the result in a new column called Average.
+
