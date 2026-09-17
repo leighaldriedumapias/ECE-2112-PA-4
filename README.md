@@ -206,9 +206,6 @@ plt.bar(hometown_avg['Hometown'], hometown_avg['Average'])
 plt.title('Mean Average by Hometown')
 plt.ylim(0, 100)
 
-#just assgined to show graph in README FILE
-plt.savefig('category_averages.png', bbox_inches='tight', dpi=300)
-
 plt.show()
 
 print("For Track dataset, students in the Communication track recorded the highest sample mean average grade (67.98)")
